@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Night Arcadia - About</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            margin: 0;
+            display: flex;
+            overflow-x: hidden;
+        }
+
+      
+        .sidebar {
+            width: 250px;
+            background-color: #3111e3;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -260px; 
+            padding-top: 20px;
+            text-align: center;
+            transition: left 0.8s ease-in-out;
+        }
+        .sidebar h1 {
+            color: white;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .sidebar ul li {
+            padding: 15px;
+            transform: translateX(-30px);
+            opacity: 0;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            padding: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar ul li a:hover {
+            background-color: #2206a1;
+            border-radius: 5px;
+            transform: scale(1.1);
+        }
+
+      
+        .main-content {
+            margin-left: 270px;
+            padding: 20px;
+            flex-grow: 1;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        
+        .hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer {
+            margin-top: 20px;
+            background-color: #222;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+ 
+    <div class="sidebar" id="sidebar">
+        <h1 id="logo">Night Arcadia</h1>
+        <ul>
+            <li><a href="Home2.html">Home</a></li>
+            <li><a href="Games.html">Games</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="Contact2.html">Contact</a></li>
+            <li><a href="Registration2.html">Register</a></li>
+        </ul>
+    </div>
+
+   
+    <div class="main-content" id="main-content">
+        <section id="about" class="hidden">
+            <h1>Night Arcadia was an idea that saw light in 2015, with the intention of creating a space where thousands
+                and even millions of gamers around the world could quickly access their favorite games from a user-friendly 
+                platform.From the brilliant mind of Mr Lancel Speville, our CEO, who placed the founding stone of this Company
+            to Jason Stallone, Melanie Arnaud and Jenna Ortega who were also core members of this Project are the main Characters 
+        that were present. This Ambition that we had at that time is still present as we speak and we hope that in the nearby
+    we can grow even bigger and achieve even greater things.</h1>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Night Arcadia. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    
+    <script>
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("sidebar").style.left = "0";
+            document.getElementById("logo").style.opacity = "1";
+            document.getElementById("logo").style.transform = "translateX(0)";
+            
+            let menuItems = document.querySelectorAll(".sidebar ul li");
+            menuItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = "1";
+                    item.style.transform = "translateX(0)";
+                }, 200 * index);
+            });
+
+            document.getElementById("main-content").style.opacity = "1";
+            document.getElementById("main-content").style.transform = "translateY(0)";
+        });
+
+        
+        const sections = document.querySelectorAll(".hidden");
+
+        function showElementsOnScroll() {
+            sections.forEach((section) => {
+                let sectionTop = section.getBoundingClientRect().top;
+                let windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add("show");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", showElementsOnScroll);
+        showElementsOnScroll(); 
+    </script>
+
+</body>
+</html>
+
